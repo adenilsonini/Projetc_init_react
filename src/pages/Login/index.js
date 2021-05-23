@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import Logo from "../../assets/login.png";
 import api from "../../services/api";
-import { login, logout, Authenticated } from "../../services/auth";
+import { login, logout, getToken } from "../../services/auth";
 
 const sair = () => {
   logout();
@@ -46,7 +46,7 @@ class Login extends Component {
            <img src={Logo} alt="Imagem logo" />
       </div>
 
-{Authenticated() == null ?
+{getToken() == null ?
 
     <form onSubmit={this.handleSignIn}>
        
@@ -58,7 +58,7 @@ class Login extends Component {
              
              <div className="card-body">
 
-                  {Authenticated() !== null && <div className="alert alert-danger" style={{border: '2px solid red'}} role="alert">teste login aut</div>}
+                  {getToken() !== null && <div className="alert alert-danger" style={{border: '2px solid red'}} role="alert">teste login aut</div>}
 
                   {this.state.error && <div className="alert alert-danger" style={{border: '2px solid red'}} role="alert">{this.state.error}</div>}
 
